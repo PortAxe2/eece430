@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Users</title>
+    <style>
+        body{
+            font-size: 16pt;
+        }
+        button {
+            width: 200px;
+            height: 45px;
+            font-size: 14pt;
+        }
+        .user{
+            background-color: rgba(0, 0, 0, 0.082);
+            margin: 8px;
+            padding: 16px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<header></header>
+
+<a href="/adminPage">
+    <button style="float: left;">Go Back</button>
+</a>
+<a href="/createUser?username=admin">
+    <button id="createUser" style="float: left;">Create User</button><br><br>
+</a>
+<body>
+    <div>
+        {% for user in users %}
+            <div class="user">
+                <span for="">Username: </span>
+                <span>{{ user["username"] }}</span>
+                <br>
+                <span for="">Email: </span>
+                <span>{{ user["email"] }}</span>
+                <br>
+                <span for="">First Name: </span>
+                <span>{{ user["FirstName"] }}</span>
+                <br>
+                <span for="">Last Name: </span>
+                <span>{{ user["LastName"] }}</span>
+                <br>
+                <span for="">Password: </span>
+                <span>{{ user["UserPassword"] }}</span>
+                <br><hr>
+                <a href="/editUser?username=admin&usernameToEdit={{user['username']}}">
+                    <button>Edit User</button>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+
+</html>
+

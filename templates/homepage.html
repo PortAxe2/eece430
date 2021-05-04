@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <!--For flask--------------------------------------------------------------------------------------
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/homepage.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.css">
+    <script src="{{ url_for('static', filename='scripts/homepage.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+    <link rel="stylesheet" href="../static/styles/homepage.css">
+    <script src="../static/scripts/homepage.js"></script>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/homepage.css') }}">
+    <script src="{{ url_for('static', filename='scripts/homepage.js') }}"></script>
+    --------------------------------------------------------------------------------------------------->
+    
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/homepage.css') }}">
+    <script src="{{ url_for('static', filename='scripts/homepage.js') }}"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Homepage</title>
+    <script>
+        var weddings;
+        weddings = '{{weddings | tojson}}';
+    </script>
+</head>
+
+<header>
+    <div class="myNav">
+        <a href="/mainpage">
+            <img src="{{ url_for('static', filename='graphics/logo.png') }}" alt="logo">
+        </a>
+    </div>
+</header>
+
+<body>   
+    <div class="main">
+        <div class="upcomingWeddings">
+            <h1>Upcoming Weddings</h1>
+            <input class="search" type="text" placeholder="Filter Events">
+            <div id="eventss" class="events">
+                
+            </div>
+        </div>
+    </div>   
+</body>

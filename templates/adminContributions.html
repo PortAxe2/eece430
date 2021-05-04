@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Contributions</title>
+    <style>
+        body{
+            font-size: 16pt;
+        }
+        button {
+            width: 200px;
+            height: 45px;
+            font-size: 14pt;
+        }
+        .user{
+            background-color: rgba(0, 0, 0, 0.082);
+            margin: 8px;
+            padding: 16px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<header></header>
+
+<a href="/adminPage">
+    <button style="float: left;">Go Back</button>
+</a>
+<a href="/createContribution?username=admin">
+    <button id="createUser" style="float: left;">Create Contribution</button><br><br>
+</a>
+<body>
+    <div>
+        {% for contribution in contributions %}
+            <div class="user">
+                <span for="">Wedding ID: </span>
+                <span>{{ contribution["weddingID"] }}</span>
+                <br>
+                <span for="">Sender: </span>
+                <span>{{ contribution["sender"] }}</span>
+                <br>
+                <span for="">Amount: </span>
+                <span>${{ contribution["moneyAmount"] }}</span>
+                <br><hr>
+                <a href="/editContribution?username=admin&contributionIdToEdit={{contribution['transactionID']}}">
+                    <button>Edit contribution</button>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+
+</html>
+

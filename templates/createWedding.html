@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Create Wedding</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/createWedding.css') }}"/>
+    <script>
+      window.onload = function() {
+        var currentUrl = new URL(window.location);
+        username = currentUrl.searchParams.get('username');
+        if (!username) {
+          window.location.replace("http://localhost:5000/login");
+        }
+        else {
+          document.getElementById('createWed').setAttribute('action', `/createWedding?username=${username}`);
+        }
+
+        
+
+        console.log(username);
+        if(username == "admin"){
+          document.getElementsByName('username')[0].disabled = false;
+          document.getElementsByName('username')[0].style.display = "";
+        }
+
+      }
+    </script>
+  </head>
+
+
+<body> 
+  <div class="wrapper">
+    <div class="logo">
+        <a href="/mainpage">
+            <img src="{{ url_for('static', filename='graphics/logo.png') }}" alt="">
+        </a>
+    </div>
+    <ul class="nav-area">
+        <li><a href="/adminPage">Back to admin page</a></li>
+        <li><button id="logout">Logout</button></li>
+    </ul>
+
+  </div>
+  <div class="createWedDiv"><br><br><br><br><br><br><br><br></div>
+  <h1>Create Wedding</h1>
+  <form id="createWed" class="main" action="" method="POST" enctype="multipart/form-data">
+    <label for="">Username: </label>
+    <input style="display: none;" class="fieldInputCustom" type="text" name="username" disabled required><br>
+    <label for="">Bride's Name: </label>
+    <input class="fieldInputCustom" type="text" name="bname" required><br>
+    <label for="">Groom's Name: </label>
+    <input class="fieldInputCustom" type="text" name="gname" required><br>
+    <label for="">Date:  </label>
+    <input class="fieldInputCustom" type="date" name="date" value="" required>
+    <label for="">Time:  </label>
+    <input class="fieldInputCustom"  type="time" name="time" required><br>
+    <label for="">Location: </label>
+    <input class="fieldInputCustom" type="text" name="location" value="" required><br>
+    <label for="">Your cover image URL:</label>
+    <input class="fieldInputCustom" type="url" name="picture" required>
+    <!--
+    <input type="file" accept=".png, .jpg, .jpeg" name="picture">
+    -->
+    <br>
+    Add Guests: 
+    <br>
+    <span id="guests">
+      <input type="text" name="guest[]" placeholder="Enter email or username">
+    </span>
+    <input type="button" value="+" onclick="addGuest()">
+    <br><br>
+    <input class="buttonC" type="submit" value="Create">
+  </form>
+
+<script type="text/javascript">
+function addGuest() {
+  // Create a space above each new input
+  var br = document.createElement("br");
+  // Add input element for each guest
+  var row = document.createElement("input");
+  row.setAttribute("name", "guest[]");
+  row.setAttribute("placeholder", "Enter email or username");
+
+  // Add them to the container in the interface
+  document.getElementById("guests").appendChild(br);
+  document.getElementById("guests").appendChild(row);
+}
+</script>
+
+
+  </body>
+</html>

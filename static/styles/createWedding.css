@@ -1,0 +1,170 @@
+body{
+  font-family: 'Poppins',sans-serif;
+  color:#ffffff;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://myzoomwedding.com/wp-content/uploads/2020/04/photo-of-floral-arch-during-daytime-2788494-2-1020x600.jpg);
+  height: 100vh;
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-position: center center;
+	position: relative;
+}
+
+h1{
+  text-align: center;
+  color:#ffb6c1;
+  font-size: 3em;
+  margin-bottom:50px
+}
+form{
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+label{
+margin-bottom:10px; /*or whatever you want the spacing to be*/
+text-align : center;
+}
+input{
+
+margin-bottom:10px; /*or whatever you want the spacing to be*/
+text-align : center;
+}
+.plus {
+  display:inline-block;
+  width:20px;
+  height:20px;
+
+  background:
+    linear-gradient(#fff,#fff),
+    linear-gradient(#fff,#fff),
+    #000;
+  background-position:center;
+  background-size: 50% 2px,2px 50%; /*thickness = 2px, length = 50% (25px)*/
+  background-repeat:no-repeat;
+}
+
+
+/*--------------------------------------------------*/
+* {
+	margin: 0;
+	padding: 0;
+}
+html {
+  min-height: 100%;
+}
+
+.wrapper {
+	width: 1170px;
+	margin: auto;
+}
+
+header {
+	background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://myzoomwedding.com/wp-content/uploads/2020/04/photo-of-floral-arch-during-daytime-2788494-2-1020x600.jpg);
+	height: 100vh;
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-position: center center;
+	position: relative;
+}
+.nav-area {
+	float: right;
+	list-style: none;
+	margin-top: 35px;
+}
+.nav-area li {
+	display: inline-block;
+	height:30px; overflow: hidden;
+}
+.nav-area li a {
+	color: #fff;
+	text-decoration: none;
+	padding: 5px 20px;
+	font-size: 16px;
+	text-transform: uppercase;
+}
+.nav-area li a:hover {
+	background: #fff;
+	color: #333;
+}
+.logo {
+	float: left;
+}
+.logo img {
+	position: absolute;
+	width: 12%;
+	padding: 15px 0;
+	margin-top: 10px;
+}
+
+
+
+@media (max-width:600px) {
+	.wrapper {
+		width: 100%;
+	}
+	.logo {
+		float: none;
+		width: 50%;
+		text-align: center;
+		margin: auto;
+	}
+	
+	.nav-area {
+		float: none;
+		margin-top: 0;
+	}
+	.nav-area li a {
+		padding: 5px;
+		font-size: 11px;
+	}
+	.nav-area {
+		text-align: center;
+	}
+	.welcome-text {
+		width: 100%;
+		height: auto;
+		margin: 30% 0;
+	}
+	.welcome-text h1 {
+		font-size: 30px;
+	}
+}
+
+
+.buttonC, #logout {
+	transition: 0.3s ease-out;
+	border-radius: 5px;
+	color: white;
+	width: 70px;
+	height: 30px;
+	line-height: 17px;
+	border: 1px solid white;
+	background: none;
+}
+
+.buttonC:hover, #logout:hover {
+	transition: 0.3s ease-in;
+	border-radius: 5px;
+	color: white;
+	width: 70px;
+	height: 30px;
+	line-height: 17px;
+	border: 1px solid white;
+	background: none;
+	background: hsla(0, 0%, 100%, 0.308);
+}
+
+.createWedDiv {
+	padding: 16px;
+}
+
+.fieldInputCustom {
+	font-size: 12pt;
+	color: white;
+	background: none;
+	margin: 16px;
+	width: 250px;
+	height: 40px;
+	border: none;
+	border-bottom: 1px solid white;
+}

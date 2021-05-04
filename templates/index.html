@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/index.css') }}">
+    <script src="{{ url_for('static', filename='scripts/index.js') }}"></script>
+    <title>Login</title>
+
+    
+</head>
+
+
+<body>
+    <div class="hero">
+        <a href="/mainpage">
+            <button>TEST: Go to next page</button>
+        </a>
+        <div class="form-box">
+            <div class="button-box">
+                <div id="btn"></div>
+                    <button type="button" class="toggle-btn" onclick="login()" name>Log In</button>
+                    <button type="button" class="toggle-btn" onclick="signup()" name>Sign Up</button>
+                </div>
+                <form action="/signin" method="POST" id="login" class="input-group">
+                    <input id="username2" name="username2" class="input-field" placeholder="Username"required>
+                    <input name="password" type="text" class="input-field" placeholder="Enter Password"required>
+                    <button id="signinButton" type="submit" class="submit-btn">Log In</button>
+                </form>
+                <form id="signup" action="/signup" method="POST" class="input-group">
+                    <input name="username" id="username" type="text" class="input-field" placeholder="User Name" required>
+                    <input name="email" id="email" type="email" class="input-field" placeholder="Email Address" required>
+                    <input name="password" id="password" type="text" class="input-field" placeholder="Enter Password" required>
+                    <button id="signupButton" type="submit" class="submit-btn">Sign Up</button>
+                </form>
+                <div class="error" style="display: none;">
+                    <p style="color: red;">Error creating user</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Edit User</title>
+    <style>
+    </style>
+    <script>
+        window.onload = function() {
+            document.getElementById('backButton').onclick = function goBack() {
+                window.history.back();
+            };
+        }
+        var userInfo = JSON.parse('{{userInfo | tojson}}');
+        console.log(userInfo);
+    </script>
+</head>
+
+<header></header>
+
+<button id="backButton" style="float: left;">Go Back</button><br><br>
+<body>
+    <div>
+        <form  id="userForm" action="/editUser?username=admin&usernameToEdit={{userInfo[0]['username']}}" method="POST">
+            <label for="username">Username</label>
+            <input type="text" name="username" readonly value="{{userInfo[0]['username']}}">
+            <label for="">Email</label>
+            <input type="text"name="email" required value="{{userInfo[0]['email']}}">
+            <label for="FirstName">First Name</label>
+            <input type="text"name="FirstName" required value="{{userInfo[0]['FirstName']}}">
+            <label for="LastName">Last Name</label>
+            <input type="text"name="LastName" required value="{{userInfo[0]['LastName']}}">
+            <label for="UserPassword">Password</label>
+            <input type="text"name="UserPassword" required value="{{userInfo[0]['UserPassword']}}">
+            <input type="submit" value="Submit Changes">
+        </form>
+        <br>
+        <form  id="userForm" action="/deleteUser?usernameToEdit={{userInfo[0]['username']}}" method="POST">
+            <input style="background-color: red;" type="submit" value="Delete User">
+        </form>
+    </div>
+</body>
+
+</html>
+

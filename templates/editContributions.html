@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Edit Contribution</title>
+    <style>
+    </style>
+    <script>
+        window.onload = function() {
+            document.getElementById('backButton').onclick = function goBack() {
+                window.history.back();
+            };
+        }
+    </script>
+</head>
+
+<header></header>
+
+<button id="backButton" style="float: left;">Go Back</button><br><br>
+<body>
+    <div>
+        <form  id="userForm" action="/editContribution" method="POST">
+            <label for="weddingID">Username</label>
+            <input type="text" name="username" readonly value="{{contribution[0]['weddingID']}}">
+            <label for="sender">Sender</label>
+            <input type="text" name="sender" readonly value="{{contribution[0]['sender']}}">
+            <label for="amount">Amount</label>
+            <input type="text" name="amount" value="{{contribution[0]['moneyAmount']}}">
+            <label for="txID">Transaction ID</label>
+            <input type="text" name="txID" readonly value="{{contribution[0]['transactionID']}}">
+            <input type="submit" value="Submit Changes">
+        </form>
+        <br>
+        <form  id="userForm" action="/deleteContribution?contributionIdToEdit={{contribution['transactionID']}}" method="POST">
+            <label style="display: none;" for="txID">Transaction ID</label>
+            <input style="display: none;" type="text" name="txID" readonly value="{{contribution[0]['transactionID']}}">
+            <input style="background-color: red;" type="submit" value="Delete Contribution">
+        </form>
+    </div>
+</body>
+
+</html>
+

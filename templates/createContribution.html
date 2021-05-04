@@ -1,0 +1,23 @@
+<body>
+    <a href="/adminContributions">
+        <button>Go back to contributions</button>
+    </a>
+    <br><br>
+    <form action="/createContribution" method="POST">
+        <label for="">Username:</label>
+        <select required name="username" id="username">
+            {% for username in usernames %}
+                <option value="{{username[0]}}">{{username[0]}}</option>
+            {% endfor %}
+        </select><br><br>
+        <label for="">Wedding ID:</label>
+        <select required name="weddingID" id="weddingID">
+            {% for weddingID in weddingIDs %}
+                <option value="{{weddingID[0]}}">{{weddingID[0]}}</option>
+            {% endfor %}
+        </select><br><br>
+        <label for="">Amount:</label>
+        <input type="text" required name="amount"><br><br>
+        <input type="submit" value="Create Contribution">
+    </form>
+</body>

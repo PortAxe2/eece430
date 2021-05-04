@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Letters</title>
+    <style>
+        body{
+            font-size: 16pt;
+        }
+        button {
+            width: 200px;
+            height: 45px;
+            font-size: 14pt;
+        }
+        .user{
+            background-color: rgba(0, 0, 0, 0.082);
+            margin: 8px;
+            padding: 16px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<header></header>
+
+<a href="/adminPage">
+    <button style="float: left;">Go Back</button>
+</a>
+<a href="/createLetter?username=admin">
+    <button id="createUser" style="float: left;">Create Letter</button><br><br>
+</a>
+<body>
+    <div>
+        {% for letter in letters %}
+            <div class="user">
+                <span for="">Wedding ID: </span>
+                <span>{{ letter["weddingID"] }}</span>
+                <br>
+                <span for="">Sender: </span>
+                <span>{{ letter["sender"] }}</span>
+                <br>
+                <span for="">Message: </span>
+                <span>{{ letter["congratsMessage"] }}</span>
+                <br><hr>
+                <a href="/editLetter?username=admin&letterIdToEdit={{letter['letterID']}}">
+                    <button>Edit Letter</button>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+
+</html>
+

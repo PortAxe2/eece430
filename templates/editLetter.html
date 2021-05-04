@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Edit Letter</title>
+    <style>
+    </style>
+    <script>
+        window.onload = function() {
+            document.getElementById('backButton').onclick = function goBack() {
+                window.history.back();
+            };
+        }
+    </script>
+</head>
+
+<header></header>
+
+<button id="backButton" style="float: left;">Go Back</button><br><br>
+<body>
+    <div>
+        <form  id="userForm" action="/editLetter?letterIdToEdit={{letter[0]['messageID']}}" method="POST">
+            <label for="weddingID">Username</label>
+            <input type="text" name="username" readonly value="{{letter[0]['weddingID']}}">
+            <label for="sender">Sender</label>
+            <input type="text" name="sender" readonly value="{{letter[0]['sender']}}">
+            <label for="message">Message</label>
+            <input type="text" name="message" value="{{letter[0]['message']}}">
+            <label for="messageID">Message ID</label>
+            <input type="text" name="messageID" readonly value="{{letter[0]['messageID']}}">
+            <input type="submit" value="Submit Changes">
+        </form>
+        <br>
+        <form  id="userForm" action="/deleteLetter?letterIdToEdit={{letter[0]['messageID']}}" method="POST">
+            <input style="background-color: red;" type="submit" value="Delete Letter">
+        </form>
+    </div>
+</body>
+
+</html>
+

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wedding Detail</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/myWedding.css') }}"> 
+    <script src="{{ url_for('static', filename='scripts/myWedding.js') }}"></script>   
+</head>
+
+<header>
+    <div class="myNav">
+        <a href="/mainpage">
+            <img src="{{ url_for('static', filename='graphics/logo.png') }}" alt="logo">
+        </a>
+    </div>
+    <script>
+        var congratsMessages = JSON.parse('{{congratsMessages | tojson}}');
+        var moneyContributions = JSON.parse('{{moneyContributions | tojson}}');
+        var weddingID = '{{weddingDets[0]}}';
+    </script>
+    <div>
+        <p style="display: none;" id="weddingDateValue">{{weddingDets[3]}}</p>
+        <var style="display: none;" id="attendeesValue">{{guestEmails}}</var>
+    </div>
+</header>
+
+<body>
+    <div class="mainDiv">
+        <a style="display: none;" id="backButton" href="/adminPage">
+            <button style="float: left;">Go Back</button>
+        </a>
+        <div id="staticWedding" class="wedding">
+            <img src={{weddingDets[5]}} alt="">
+            <div class="details">
+                <h1>{{weddingDets[1]}} & {{weddingDets[2]}}</h1>
+                <br>
+                <hr><br>
+                <h3>Date: {{weddingDets[3]}}</h3>
+                <h3>Venue: {{weddingDets[4]}}</h3>
+                <br><hr>
+                <h3>List of attendees: </h3>
+                <br>
+                <div class="attendees">
+                    <ul>
+                        {% for name in attendees %}
+                            <li>{{name}}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <br>
+                <button class="buttonCo" onclick="startEdit()">Edit</button><br>
+            </div>
+            <div class="contributions" id="contributions">
+                <h2>Money Contributions</h2><hr><br>
+                <div class="moneyDiv">
+                    <table id="moneyTable" class="tableDiv moneyTable">
+                        <tr>
+                            <th>Sender</td>
+                            <th>Amount</td>
+                        </tr>
+                    </table>
+                </div> 
+                <h2>Congratulation letters</h2><hr><br>
+                <div class="congratsDiv">
+                    <table id="congratsTable" class="tableDiv congratsTable">
+                        <tr>
+                            <th>Sender</td>
+                            <th>Message</td>
+                        </tr>
+                    </table>
+                </div> 
+            </div>
+            <div>
+                <h1>Total amount: </h1><hr>
+                <br>
+                <h2 id="totalMoney"></h2>
+            </div>
+        </div>
+        <div  style="display: none;"  id="editWedding" class="wedding">
+            <img src={{weddingDets[5]}} alt="">
+            <div class="details">
+                <form id="updateWed" action="/updateWedding" method="POST">
+                    <label for="bname">Bride Name:</label>
+                    <input required type="text" name="bname" value={{weddingDets[1]}}><br>
+                    <label for="gname">Groom Name:</label>
+                    <input required type="text" name="gname" value={{weddingDets[2]}}>
+                    <br>
+                    <hr><br>
+                    <h3>Date:</h3>
+                    <input required type="datetime-local" name="date">
+    
+                    <h3>Venue: </h3>
+                    <input required type="text" name="location" value={{weddingDets[4]}}>
+                    <h3>Image URL: </h3>
+                    <input required type="text" name="imageURL" value={{weddingDets[5]}}>
+                    <br><hr>
+                    <h3>List of attendees: </h3>
+                    <br>
+                    <div class="attendees">
+                        <span id="guests">
+                        </span>
+                        <input type="button" value="+" onclick="addGuest()">
+                    </div>
+                </form>
+                <button class="buttonCo-cancel" onclick="cancelEdit()">Cancel</button>
+                <button form="updateWed" class="buttonCo-save">Save</button>
+                <form id="deleteWeddingForm" action="" method="POST">
+                    <input id="deleteWedding" type="submit" class="buttonCo-delete" value="Delete">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+

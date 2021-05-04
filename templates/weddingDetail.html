@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wedding Detail</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/weddingDetail.css') }}"> 
+    <script src="{{ url_for('static', filename='scripts/weddingDetail.js') }}"></script>   
+</head>
+
+<header>
+    <div class="myNav">
+        <a href="/mainpage">
+            <img src="{{ url_for('static', filename='graphics/logo.png') }}" alt="logo">
+        </a>
+    </div>
+</header>
+
+<body>
+    <div class="mainDiv">
+        <div class="wedding">
+            <img src={{weddingDets[5]}} alt="">
+            <div class="details">
+                <h1>{{weddingDets[1]}} & {{weddingDets[2]}}</h1>
+                <br>
+                <hr><br>
+                <h3>Date: {{weddingDets[3]}}</h3>
+                <h3>Venue: {{weddingDets[4]}}</h3>
+                <br><hr>
+                <h3>List of attendees: </h3>
+                <br>
+                <div class="attendees">
+                    <ul>
+                        {% for name in attendees %}
+                            <li>{{name}}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h2>Congratulate the couple</h2><hr><br>
+            <form id="sendCongrats" action="" method="POST">
+                <textarea name="congratsMessage" id="congratsMessage" cols="80" rows="10"></textarea><br>
+                <input class="buttonSubmit" type="submit" value="Send Congrats">
+            </form>
+        </div>
+        <br><br>
+        <div>
+            <h2>Send money as gift</h2><hr><br>
+            <form id="sendMoney" action="" method="POST">
+                <label for="amount">Amount: (in USD)</label>
+                <input type="number" name="amount" id="amount">
+                <input class="buttonSubmit" type="submit" value="Send Congrats">
+            </form>
+        </div>
+        <br><br><br>
+    </div>
+</body>
+
+</html>
+

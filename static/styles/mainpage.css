@@ -1,0 +1,140 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+html {
+  min-height: 100%;
+}
+body {
+	font-family: 'Poppins',sans-serif;
+}
+.wrapper {
+	width: 1170px;
+	margin: auto;
+}
+header {
+	background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://myzoomwedding.com/wp-content/uploads/2020/04/photo-of-floral-arch-during-daytime-2788494-2-1020x600.jpg);
+	height: 100vh;
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-position: center center;
+	position: relative;
+}
+.nav-area {
+	float: right;
+	list-style: none;
+	margin-top: 35px;
+}
+.nav-area li {
+	display: inline-block;
+	height:30px; overflow: hidden;
+}
+.nav-area li a {
+	color: #fff;
+	text-decoration: none;
+	padding: 5px 20px;
+	font-size: 16px;
+	text-transform: uppercase;
+}
+.nav-area li a:hover {
+	background: #fff;
+	color: #333;
+}
+.logo {
+	float: left;
+}
+.logo img {
+	position: absolute;
+	width: 12%;
+	padding: 15px 0;
+	margin-top: 10px;
+}
+.welcome-text {
+	position: absolute;
+	width: 520px;
+	height: 300px;
+	margin: 20% 36%;
+	text-align: center;
+}
+.welcome-text h1 {
+	text-align: center;
+	color: #fff;
+	text-transform: none;
+	font-size: 40px;
+	font-family: Bebas Neue;
+}
+.welcome-text h1 span {
+	color: #ffb6c1;
+}
+.welcome-text a {
+	border: 1px solid #fff;
+	padding: 10px 25px;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 14px;
+	margin-top: 20px;
+	display: inline-block;
+	color: #fff;
+}
+.welcome-text a:hover {
+	background: #fff;
+	color: #333;
+}
+
+
+@media (max-width:600px) {
+	.wrapper {
+		width: 100%;
+	}
+	.logo {
+		float: none;
+		width: 50%;
+		text-align: center;
+		margin: auto;
+	}
+	
+	.nav-area {
+		float: none;
+		margin-top: 0;
+	}
+	.nav-area li a {
+		padding: 5px;
+		font-size: 11px;
+	}
+	.nav-area {
+		text-align: center;
+	}
+	.welcome-text {
+		width: 100%;
+		height: auto;
+		margin: 30% 0;
+	}
+	.welcome-text h1 {
+		font-size: 30px;
+	}
+}
+
+
+#logout {
+	transition: 0.3s ease-out;
+	border-radius: 5px;
+	color: white;
+	width: 70px;
+	height: 30px;
+	line-height: 17px;
+	border: 1px solid white;
+	background: none;
+}
+
+#logout:hover {
+	transition: 0.3s ease-in;
+	border-radius: 5px;
+	color: white;
+	width: 70px;
+	height: 30px;
+	line-height: 17px;
+	border: 1px solid white;
+	background: none;
+	background: hsla(0, 0%, 100%, 0.308);
+}
+

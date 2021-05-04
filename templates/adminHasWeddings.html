@@ -1,0 +1,23 @@
+<body>
+    <a href="/adminPage">
+        <button>Go back to contributions</button>
+    </a>
+    <br><br>
+    {% for ownership in ownerships %}
+        <form action="/editOwnerShip?ownershipID={{ ownership['ownershipID'] }}" method="POST">
+            <label for="ownershipID">Ownership ID: </label>
+            <input readonly type="text" value="{{ ownership['ownershipID'] }}" name="ownershipID">
+            
+            <label for="weddingID">Wedding ID: </label>
+            <input readonly type="text" value="{{ ownership['weddingID'] }}" name="weddingID">
+            <label for="username">Username: </label>
+            <select name="username" id="username">
+                <option value="{{ ownership['username'] }}">{{ ownership['username'] }}</option>
+                {% for freeUser in freeUsers %}
+                    <option value="{{ freeUser[0] }}">{{ freeUser[0] }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Submit changes">
+        </form>
+    {% endfor %}
+</body>

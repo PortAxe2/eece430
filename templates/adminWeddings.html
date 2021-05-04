@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Weddings</title>  
+    <style>
+        body{
+            font-size: 16pt;
+        }
+        button {
+            width: 200px;
+            height: 45px;
+            font-size: 14pt;
+        }
+        .wedding{
+            background-color: rgba(0, 0, 0, 0.082);
+            margin: 8px;
+            padding: 16px;
+            border-radius: 8px;
+        }
+    </style>
+    <script>
+        var weddings = JSON.parse('{{weddings | tojson}}');
+        console.log(weddings);
+        window.onload = function() {
+            document.getElementById('createWedding').onclick = function goBack() {
+                window.location.replace()
+            };
+        }
+    </script>
+</head>
+
+<header></header>
+
+<a href="/adminPage">
+    <button style="float: left;">Go Back</button>
+</a>
+<a href="/createWedding?username=admin">
+    <button id="createWedding" style="float: left;">Create Wedding</button><br>
+</a>
+<body>
+    <div>
+        <br>
+        {% for wedding in weddings %}
+            <div class="wedding">
+                <span for="">Wedding ID: </span>
+                <span>{{ wedding["weddingID"] }}</span>
+                <br>
+                <span for="">Bride name: </span>
+                <span>{{ wedding["brideName"] }}</span>
+                <br>
+                <span for="">Groom name: </span>
+                <span>{{ wedding["groomName"] }}</span>
+                <br>
+                <span for="">Wedding Date: </span>
+                <span>{{ wedding["weddingDate"] }}</span>
+                <br>
+                <span for="">Venue: </span>
+                <span>{{ wedding["venue"] }}</span>
+                <br>
+                <span for="">Image URL: </span>
+                <span>{{ wedding["imageURL"] }}</span><br>
+                <br><hr>
+                <a href="/myWedding?username=admin&weddingID={{wedding['weddingID']}}">
+                    <button>Edit Wedding</button>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+
+</html>
+

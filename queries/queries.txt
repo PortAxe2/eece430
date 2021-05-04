@@ -1,0 +1,84 @@
+CREATE TABLE users(
+	email varchar(25) not null unique,
+	username varchar(25) primary key,
+	UserPassword varchar(25) not null,
+);
+
+
+CREATE TABLE weddings(
+	weddingID varchar(25) primary key,
+	username varchar(25) not null,
+	brideName varchar(25) not null,
+	groomName varchar(25) not null,
+	weddingDate date not null,
+	venue varchar(25) not null,
+	foreign key (username) references users
+);
+
+
+CREATE TABLE hasWeddings(
+	username varchar(25),
+	weddingID varchar(25),
+	foreign key (username) references users,
+	foreign key (weddingID) references weddings
+);
+
+CREATE TABLE userAttending(
+	username varchar(25),
+	weddingID int,
+	foreign key (username) references users,
+	foreign key (weddingID) references weddings,
+	primary key (username, weddingID)
+);
+
+CREATE TABLE congratulations(
+	weddingID int,
+	username varchar(25),
+	congratsMessage varchar(300),
+	foreign key (weddingID) references weddings on delete cascade,
+	foreign key (username) references users on delete cascade,
+	primary key (weddingID,username)
+);
+
+CREATE TABLE moneyTransfer(
+	weddingID int,
+	username varchar(25),
+	moneyAmount real,
+	foreign key (weddingID) references weddings on delete cascade,
+	foreign key (username) references users on delete cascade,
+	primary key (weddingID,username)
+);
+
+ALTER TABLE userAttending
+	ADD CONSTRAINT fk_wedID
+	FOREIGN KEY (weddingID)
+	REFERENCES weddings
+	ON DELETE CASCADE;
+
+
+ALTER TABLE hasWeddings
+	ADD CONSTRAINT fk_weddingID
+	FOREIGN KEY (weddingID)
+	REFERENCES weddings
+	ON DELETE CASCADE;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

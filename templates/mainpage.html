@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wedding Web App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/mainpage.css') }}"> 
+    <script src="{{ url_for('static', filename='scripts/mainpage.js') }}"></script>   
+</head>
+
+<header>
+    <div class="wrapper">
+        <div class="logo">
+            <a href="">
+                <img src="{{ url_for('static', filename='graphics/logo.png') }}" alt="">
+            </a>
+        </div>
+        <ul class="nav-area">
+            <li><a href="test.html">Home</a></li>
+            <li><a href="#">Invitations</a></li>
+            <li><a id="myWedding" href="#">My Wedding</a></li>
+            <li><a id="createWedding" href="#">Create Wedding</a></li>
+            <li><button id="logout">Logout</button></li>
+        </ul>
+    
+    </div>
+    <div class="welcome-text">
+        <h1>Keep Track Of Your Dream <span>Wedding</span></h1>
+        <a id="createWedding2" href="#">Create Wedding</a>
+        <a id="weddingList" href="#">Invitations</a>
+    </div> 
+</header>
+
+<body>
+
+</body>
+
+</html>
+

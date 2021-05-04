@@ -1,0 +1,23 @@
+<body>
+    <a href="/adminLetters">
+        <button>Go back to letters</button>
+    </a>
+    <br><br>
+    <form action="/createLetter" method="POST">
+        <label for="">Username:</label>
+        <select required name="username" id="username">
+            {% for username in usernames %}
+                <option value="{{username[0]}}">{{username[0]}}</option>
+            {% endfor %}
+        </select><br><br>
+        <label for="">Wedding ID:</label>
+        <select required name="weddingID" id="weddingID">
+            {% for weddingID in weddingIDs %}
+                <option value="{{weddingID[0]}}">{{weddingID[0]}}</option>
+            {% endfor %}
+        </select><br><br>
+        <label for="">Message:</label>
+        <input type="text" required name="message"><br><br>
+        <input type="submit" value="Create Letter">
+    </form>
+</body>
