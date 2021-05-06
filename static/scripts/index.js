@@ -2,13 +2,16 @@ var x;
 var y;
 var z;
 var infoWrong;
+var errorSignUp;
 var signinButton;
 var signupButton;
 var usernameUsed;
 
 window.onload = function() {
 
-    if(localStorage.getItem('email')) {
+    var currentUrl = new URL(window.location);
+    localStorage.clear("username");
+    if(localStorage.getItem('username')) {
         window.location.replace("http://localhost:5000/mainpage");
     }
 
@@ -16,11 +19,13 @@ window.onload = function() {
     y = document.getElementById("signup");
     z = document.getElementById("btn");
 
+    infoWrong = Boolean(currentUrl.searchParams.get('wrongInfo'));
+    errorSignUp = Boolean(currentUrl.searchParams.get('errorSignUp'));
     if (infoWrong == true) {
-        document.getElementById('error').style.display = "block";
-        setTimeout(function() {
-            document.getElementById('error').style.display = "none";
-        }, 3000)
+        alert('Incorrect username or password');
+    }
+    if (errorSignUp == true) {
+        alert('Error creating user. Username may be already taken');
     }
     
     signinButton = document.getElementById('signinButton');

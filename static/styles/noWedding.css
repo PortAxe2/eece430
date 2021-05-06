@@ -16,12 +16,12 @@ body {
     background-color: rgba(0, 0, 0, 0.205);
 }
 
-.titleWed {
+.titleBadPage {
     color: white;
     text-transform: uppercase;
 }
 
-.createWed {
+.badPage {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 14pt;
     border-radius: 8px;
@@ -34,7 +34,7 @@ body {
     transition: 0.2s ease-out;
 }
 
-.createWed:hover {
+.badPage:hover {
     transition: 0.2s ease-in;
     filter: brightness(1.1);
 }

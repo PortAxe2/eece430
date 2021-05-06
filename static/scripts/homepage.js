@@ -26,6 +26,9 @@ window.onload = function() {
         anchorLink.appendChild(newWed);
         events.appendChild(anchorLink);
     }
+    if (weddingsJSON.length == 0){
+        document.getElementById('noUpWeds').style.display = "";
+    }
 }
 
 function pageChanged(choice) {

@@ -25,7 +25,7 @@
             <label for="sender">Sender</label>
             <input type="text" name="sender" readonly value="{{letter[0]['sender']}}">
             <label for="message">Message</label>
-            <input type="text" name="message" value="{{letter[0]['message']}}">
+            <input required type="text" name="message" value="{{letter[0]['message']}}">
             <label for="messageID">Message ID</label>
             <input type="text" name="messageID" readonly value="{{letter[0]['messageID']}}">
             <input type="submit" value="Submit Changes">

@@ -43,14 +43,16 @@ def signin():
         else:
             return redirect('/mainpage')
     else:
-        return render_template("index.html", infoWrong = True)
+        return redirect('/login?wrongInfo=true')
 
 @app.route('/signup', methods=['POST'])
 def signup():
     username     = request.form['username']
     email        = request.form['email']
+    firstName        = request.form['firstName']
+    lastName        = request.form['lastName']
     passwordUser = request.form['password']
-    SQL = "INSERT INTO users VALUES ('{}', '{}', '{}')".format(email, username, passwordUser)
+    SQL = "INSERT INTO users VALUES ('{}', '{}', '{}', '{}', '{}', 0)".format(username,email, firstName,lastName, passwordUser)
     try:
         conn.execute(SQL)
         conn.commit()
@@ -58,7 +60,7 @@ def signup():
         return redirect('/mainpage')
     except Exception as e:
         print(e)
-        return render_template("index.html", infoWrong = True)
+        return redirect('/login?errorSignUp=true')
 
 @app.route('/adminPage', methods=['GET'])
 def adminPage():
@@ -476,12 +478,22 @@ def myWedding():
                             congratsMessages = congratsList,
                             moneyContributions = moneyContributionsList)
 
+@app.route('/alreadyHasWedding', methods=['GET'])
+def alreadyHasWedding():
+    return render_template("alreadyHasWedding.html")
+
 @app.route('/createWedding', methods=['GET', 'POST'])
 def createWedding():
 
     if request.method == 'GET':
-        
-        return render_template("createWedding.html")
+        username = request.args.get('username')
+        print(username)
+        try:
+            weddingID = conn.execute("SELECT weddingID from hasWeddings WHERE username = '{}'".format(username)).fetchall()[0][0]
+            return redirect('/alreadyHasWedding')
+        except Exception as e:
+            print(e)
+            return render_template("createWedding.html")
 
     elif request.method == 'POST':
         username = request.args.get('username')
@@ -520,6 +532,8 @@ def createWedding():
         for guest in guests:
             try:
                 usernameGuest = conn.execute("SELECT username FROM users WHERE email=?", guest).fetchall()[0][0]
+                if username == usernameGuest:
+                    continue
                 conn.execute("INSERT INTO userAttending VALUES (?, ?)", usernameGuest, weddingID)
                 conn.commit()
             except Exception as e:
@@ -581,6 +595,8 @@ def updateWedding():
     for guest in guests:
         try:
             usernameGuest = conn.execute("SELECT username FROM users WHERE email=?", guest).fetchall()[0][0]
+            if username == usernameGuest:
+                continue
             conn.execute("INSERT INTO userAttending VALUES (?, ?)", usernameGuest, weddingID)
             conn.commit()
         except Exception as e:
@@ -632,7 +648,9 @@ def sendCongrats():
 def sendMoney():
     username = request.args.get('username')
     weddingID = request.args.get('weddingID')
-    moneyAmount = request.form['amount']
+    moneyAmount = int(request.form['amount'])
+    if (moneyAmount <= 0):
+        return redirect('/weddingDetail?username={}&weddingID={}&negativeAmount=true'.format(username, weddingID))
     if (not moneyAmount):
         return redirect('/weddingDetail?username={}&weddingID={}'.format(username, weddingID))
     try:
@@ -703,5 +721,7 @@ def editOwnerShip():
     return redirect('/adminHasWeddings')
 
 
-
+@app.errorhandler(404)
+def not_found(e):
+    return render_template("noPageFound.html")
             

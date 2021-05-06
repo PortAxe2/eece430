@@ -5,6 +5,7 @@
     <title>Create Wedding</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/createWedding.css') }}"/>
     <script>
+      var logout;
       window.onload = function() {
         var currentUrl = new URL(window.location);
         username = currentUrl.searchParams.get('username');
@@ -15,19 +16,25 @@
           document.getElementById('createWed').setAttribute('action', `/createWedding?username=${username}`);
         }
 
-        
+        logout = document.getElementById('logout');
+        logout.onclick = logoutFunction;
 
         console.log(username);
         if(username == "admin"){
           document.getElementsByName('username')[0].disabled = false;
           document.getElementsByName('username')[0].style.display = "";
+          document.getElementById('usernameLabel').style.display = "";
+          document.getElementById('adminBack').style.display = "";
         }
 
       }
+      function logoutFunction() {
+        localStorage.clear("username");
+        window.location.replace("http://localhost:5000/login");
+}
     </script>
   </head>
-
-
+  
 <body> 
   <div class="wrapper">
     <div class="logo">
@@ -36,7 +43,7 @@
         </a>
     </div>
     <ul class="nav-area">
-        <li><a href="/adminPage">Back to admin page</a></li>
+        <li style="display: none;" id="adminBack"><a href="/adminPage">Back to admin page</a></li>
         <li><button id="logout">Logout</button></li>
     </ul>
 
@@ -44,7 +51,7 @@
   <div class="createWedDiv"><br><br><br><br><br><br><br><br></div>
   <h1>Create Wedding</h1>
   <form id="createWed" class="main" action="" method="POST" enctype="multipart/form-data">
-    <label for="">Username: </label>
+    <label style="display: none;" id="usernameLabel" for="">Username: </label>
     <input style="display: none;" class="fieldInputCustom" type="text" name="username" disabled required><br>
     <label for="">Bride's Name: </label>
     <input class="fieldInputCustom" type="text" name="bname" required><br>
@@ -65,7 +72,7 @@
     Add Guests: 
     <br>
     <span id="guests">
-      <input type="text" name="guest[]" placeholder="Enter email or username">
+      <input type="text" name="guest[]" placeholder="Enter guests' emails">
     </span>
     <input type="button" value="+" onclick="addGuest()">
     <br><br>
@@ -79,7 +86,7 @@ function addGuest() {
   // Add input element for each guest
   var row = document.createElement("input");
   row.setAttribute("name", "guest[]");
-  row.setAttribute("placeholder", "Enter email or username");
+  row.setAttribute("placeholder", "Enter guests' emails");
 
   // Add them to the container in the interface
   document.getElementById("guests").appendChild(br);
