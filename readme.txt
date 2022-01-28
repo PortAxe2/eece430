@@ -1,3 +1,5 @@
+NB: Some of the templates (html+css+js) were done by other team members.
+
 Setup the database:
 
 1- Install MS SQL Express.
@@ -20,3 +22,5 @@ Setup Flask:
 9- Run set FLASK_ENV=development
 10- Run python -m flask run
 11- Open your browser at localhost:5000/login
+
+
